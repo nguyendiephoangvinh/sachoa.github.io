@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm - Sắc Hoa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>🌸 SẮC HOA 🌸</header>
+
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="gioi-thieu.html">Giới thiệu</a>
+        <a href="san-pham.html">Sản phẩm</a>
+        <a href="don-hang.html">Đặt hàng</a>
+    </nav>
+
+    <main style="padding: 40px 8%;">
+        <h2 style="text-align: center; margin-bottom: 40px; color: #ff6f91; font-size: 28px;">ĐẶT NHIỀU NHẤT</h2>
+
+        <div class="product-list">
+
+            <div class="product">
+                <img src="photo/datnhieu1.jpg" alt="Your Day">
+                <h3>Your Day</h3>
+                <p>490.000 VND</p>
+                <button class="btn" onclick="muaHoa('Your Day', '490.000 VND')">ĐẶT MUA</button>
+            </br>
+                <a href="chitiet/your-day.html" class="view-detail">Xem chi tiết</a>
+            </div>
+
+            <div class="product">
+                <img src="photo/datnhieu2.jpg" alt="Pink Moon">
+                <h3>Pink Moon</h3>
+                <p>1.200.000 VND</p>
+                <button class="btn" onclick="muaHoa('Pink Moon', '1.200.000 VND')">ĐẶT MUA</button>
+                <a href="chitiet/pink-moon.html" class="view-detail">Xem chi tiết</a>
+            </div>
+
+            <div class="product">
+                <img src="photo/datnhieu3.jpg" alt="Khúc Tình Ca">
+                <h3>Khúc Tình Ca</h3>
+                <p>710.000 VND</p>
+                <button class="btn" onclick="muaHoa('Khúc Tình Ca', '710.000 VND')">ĐẶT MUA</button>
+                <a href="chitiet/khuc-tinh-ca.html" class="view-detail">Xem chi tiết</a>
+            </div>
+
+            <div class="product">
+                <img src="photo/datnhieu4.jpg" alt="Đam Mê">
+                 <h3>Đam Mê</h3>
+                <p>490.000 VND</p>
+                <button class="btn" onclick="muaHoa('Đam Mê', '490.000 VND')">ĐẶT MUA</button>
+                 <a href="chitiet/dam-me.html" class="view-detail">Xem chi tiết</a>
+            </div>
+        </div>
+</br>
+        <h2 style="text-align: center; margin-bottom: 40px; color: #ff6f91; font-size: 28px;">SẢN PHẨM MỚI</h2>
+            <div class="product-list">
+             <div class="product">
+                <img src="photo/spm1.jpg" alt="Melodious" />
+                <h3>Melodious</h3>
+                <p>690.000 VND</p>
+                <button class="btn" onclick="muaHoa('Melodious', '690.000 VND')">ĐẶT MUA</button>
+            </br>
+                <a href="chitiet/melodious.html" class="view-detail">Xem chi tiết</a>
+        </div>
+
+        <div class="product">
+                <img src="photo/spm2.jpg" alt="Magic ">
+                <h3>Magic</h3>
+                <p>720.000 VND</p>
+                <button class="btn" onclick="muaHoa('Magic', '720.000 VND')">ĐẶT MUA</button>
+            </br>
+                <a href="chitiet/magic.html" class="view-detail">Xem chi tiết</a>
+         </div>
+
+        <div class="product">
+                <img src="photo/spm3.jpg" alt="Phép Màu ">
+                <h3>Phép Màu</h3>
+                <p>750.000 VND</p>
+                <button class="btn" onclick="muaHoa('Phép Màu', '750.000 VND')">ĐẶT MUA</button>
+            </br>
+                <a href="chitiet/phep-mau.html" class="view-detail">Xem chi tiết</a>
+        </div>
+        <script>
+        function muaHoa(ten, gia) {
+        // Cất tên và giá vào ngăn kéo bí mật
+        localStorage.setItem("hoa_dang_chon", ten);
+        localStorage.setItem("gia_dang_chon", gia);
+        // Sau đó mới nhảy sang trang đơn hàng
+        window.location.href = "don-hang.html";
+        }
+        </script>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Sắc Hoa - Trao hoa, trao yêu thương</p>
+        <p></p>
+    </footer>
+
+</body>
+</html>

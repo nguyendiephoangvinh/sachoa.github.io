@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic - Sắc Hoa</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header>🌸 SẮC HOA 🌸</header>
+
+    <nav>
+        <a href="../index.html">Trang chủ</a>
+        <a href="../gioi-thieu.html">Giới thiệu</a>
+        <a href="../san-pham.html">Sản phẩm</a>
+        <a href="../don-hang.html">Đặt hàng</a>
+    </nav>
+
+    <main class="container-chitiet">
+        <div class="khung-anh">
+            <img src="../photo/spm2.jpg" alt="Magic">
+        </div>
+
+        <div class="khung-nội-dung">
+            <p class="category">SẢN PHẨM MỚI</p>
+            <h1>Magic</h1>
+            <p class="gia-lon">720.000 VND</p>
+            
+            <div class="mo-ta">
+                <p>Bó hoa <b>Magic</b> được thiết kế với 3 cành hoa ly hồng kết hợp cùng hoa cẩm chướng đơn hồng là lựa chọn hoàn hảo để gửi tặng Mẹ vào những dịp đặc biệt.</p>
+                <ul>
+                    <li> + Hoa ly hồng: 3 cành </li>
+                    <li> + Hoa cẩm chướng đơn hồng: 10 cành</li>
+                    <li> + Lá trúc bách hợp</li>
+                    <li>🎁 Tặng kèm thiệp viết tay xinh xắn.</li>
+                </ul>
+            </div>
+       <div class="ghi-chu-san-pham">
+    <p class="tieu-de-luu-y">Lưu ý:</p>
+    <p class="noi-dung-luu-y">
+        * Vì được làm thủ công, nên sản phẩm ngoài thực tế sẽ có đôi chút khác biệt so với hình ảnh. Sắc Hoa cam kết hoa giống khoảng 80-90% so với mẫu.
+    </p>
+    <p class="noi-dung-luu-y">
+        * Vì các loại hoa lá phụ phụ thuộc vào mùa vụ, Sắc Hoa đảm bảo hoa chính và phong cách thiết kế sẽ được giữ vững, các lá phụ sẽ thay đổi phù hợp với giá cả và thẩm mỹ.
+    </p>
+</div>
+            <button class="btn" onclick="muaHoa('Magic', '720.000 VND')">ĐẶT MUA NGAY</button>
+            
+            <a href="../san-pham.html" style="margin-top: 20px; color: #888; text-decoration: none; font-size: 14px;">
+                ← Quay lại danh sách sản phẩm
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Sắc Hoa - Trao hoa, trao yêu thương</p>
+    </footer>
+
+    <script>
+        function muaHoa(ten, gia) {
+            localStorage.setItem("hoa_dang_chon", ten);
+            localStorage.setItem("gia_dang_chon", gia);
+            window.location.href = "../don-hang.html";
+        }
+    </script>
+
+</body>
+</html>

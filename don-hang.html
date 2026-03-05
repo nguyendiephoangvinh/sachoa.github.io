@@ -1,0 +1,108 @@
+<html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác Nhận Đặt Hoa - Sắc Hoa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>🌸 SẮC HOA 🌸</header>
+
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="gioi-thieu.html">Giới thiệu</a>
+        <a href="san-pham.html">Sản phẩm</a>
+        <a href="don-hang.html">Đặt hàng</a>
+    </nav>
+
+    <main class="container-donhang">
+        <h2 style="text-align: center; color: #ff6f91; margin-bottom: 30px;">Xác Nhận Đơn Hàng</h2>
+        
+        <div class="khung-form-don">
+            <div style="background: #fff0f3; padding: 20px; border-radius: 15px; margin-bottom: 25px; border: 2px dashed #ff6f91; text-align: center;">
+                <p style="font-size: 14px; color: #666; text-transform: uppercase; letter-spacing: 1px;">Bạn đang đặt mua:</p>
+                <h3 id="ten-hoa-hien-thi" style="color: #ff6f91; font-size: 24px; margin: 5px 0;">(Chưa chọn hoa)</h3>
+                <p id="gia-hoa-hien-thi" style="font-weight: bold; font-size: 18px;">0đ</p>
+            </div>
+
+            <form id="formDatHoa">
+                <div class="nhom-input">
+                    <label>Họ và tên người gửi</label>
+                    <input type="text" name="ho_ten" placeholder="Nhập tên của bạn..." required>
+                </div>
+
+                <div class="nhom-input">
+                    <label>Số điện thoại</label>
+                    <input type="tel" name="sdt" placeholder="Nhập số điện thoại..." required>
+                </div>
+
+                <div class="nhom-input">
+                    <label>Địa chỉ giao hoa</label>
+                    <textarea name="dia_chi" rows="3" placeholder="Số nhà, tên đường, phường/xã..." required></textarea>
+                </div>
+
+                <div class="nhom-input">
+                    <label>Lời nhắn đi kèm (Thiệp)</label>
+                    <textarea name="loi_nhan" rows="2" placeholder="Ví dụ: Chúc mừng sinh nhật ems yêu..."></textarea>
+                </div>
+
+                <button type="submit" id="btnGui" class="btn" style="width: 100%; margin-top: 20px;">GỬI ĐƠN HÀNG NGAY</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Sắc Hoa - Trao hoa, trao yêu thương</p>
+    </footer>
+
+    <script>
+        // Hiển thị thông tin hoa từ localStorage khi trang load
+        window.onload = function() {
+            let ten = localStorage.getItem("hoa_dang_chon");
+            let gia = localStorage.getItem("gia_dang_chon");
+
+            if (ten && gia) {
+                document.getElementById("ten-hoa-hien-thi").innerText = ten;
+                document.getElementById("gia-hoa-hien-thi").innerText = gia;
+            }
+        };
+
+        //Xử lý gửi form lên Google Sheets
+        const form = document.getElementById('formDatHoa');
+        const btnGui = document.getElementById('btnGui');
+
+        form.onsubmit = function(e) {
+            e.preventDefault(); 
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxf5Wum7oIFpSyLJJSQvFoksY_LqzlJFkLrzXO9tsjqEkl9Q-VJyWxJyTToVGpC7litHA/exec';
+            
+            // Đổi trạng thái nút bấm
+            btnGui.innerText = "Đang xử lý...khách yêu quý đợi chút nhé!";
+            btnGui.disabled = true;
+
+            const formData = new FormData(form);
+            
+            // Lấy thêm dữ liệu hoa đang chọn gắn vào form
+            formData.append('ten_hoa', localStorage.getItem("hoa_dang_chon") || "Bạn chưa chọn hoa nào");
+            formData.append('gia_hoa', localStorage.getItem("gia_dang_chon") || "0đ");
+
+            fetch(scriptURL, { method: 'POST', body: formData})
+                .then(response => {
+                    alert('🌸 Cảm ơn bạn! Đơn hàng đã được khởi tạo thành công, vui lòng chú ý điện thoại để nhận thông tin');
+                    // Xóa dữ liệu tạm để tránh đặt trùng
+                    localStorage.removeItem("hoa_dang_chon");
+                    localStorage.removeItem("gia_dang_chon");
+                    window.location.href = "index.html";
+                })
+                .catch(error => {
+                    console.error('Lỗi!', error.message);
+                    alert('Có lỗi xảy ra, vui lòng kiểm tra lại kết nối mạng!');
+                    btnGui.innerText = "GỬI ĐƠN HÀNG NGAY";
+                    btnGui.disabled = false;
+                });
+        };
+    </script>
+</body>
+</html>
